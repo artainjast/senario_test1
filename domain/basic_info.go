@@ -1,5 +1,7 @@
 package domain
 
+import "context"
+
 type City struct {
 	ID         int64    `json:"id"`
 	NAME       string   `json:"name"`
@@ -18,16 +20,25 @@ type Province struct {
 }
 
 type BasicInfoUseCase interface {
-	getProvinces(name *string) (p []Province, err error)
-	addProvince(p Province) (err error)
-	updateProvince(id int64, p Province) (err error)
-	deleteProvince(id int64) (err error)
+	getProvinces(ctx context.Context, name *string) (p []Province, err error)
+	addProvince(ctx context.Context, p Province) (err error)
+	updateProvince(ctx context.Context, id int64, p Province) (err error)
+	deleteProvince(ctx context.Context, id int64) (err error)
 
-	getCities(name *string) (c []City, err error)
-	addCity(c City) (err error)
-	updateCity(id int, c City) (err error)
-	deleteCity(id int) (err error)
+	getCities(ctx context.Context, id int64, name *string) (c []City, err error)
+	addCity(ctx context.Context, c City) (err error)
+	updateCity(ctx context.Context, id int, c City) (err error)
+	deleteCity(ctx context.Context, id int) (err error)
 }
 
 type basicInfoPostgres interface {
+	getProvinces(ctx context.Context, name *string) (p []Province, err error)
+	addProvince(ctx context.Context, p Province) (err error)
+	updateProvince(ctx context.Context, id int64, p Province) (err error)
+	deleteProvince(ctx context.Context, id int64) (err error)
+
+	getCities(ctx context.Context, id int64, name *string) (c []City, err error)
+	addCity(ctx context.Context, c City) (err error)
+	updateCity(ctx context.Context, id int, c City) (err error)
+	deleteCity(ctx context.Context, id int) (err error)
 }
