@@ -31,7 +31,7 @@ type BasicInfoUseCase interface {
 	deleteCity(ctx context.Context, id int) (err error)
 }
 
-type basicInfoPostgres interface {
+type BasicInfoPostgres interface {
 	getProvinces(ctx context.Context, name *string) (p []Province, err error)
 	addProvince(ctx context.Context, p Province) (err error)
 	updateProvince(ctx context.Context, id int64, p Province) (err error)
