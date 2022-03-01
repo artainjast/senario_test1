@@ -20,7 +20,7 @@ type Province struct {
 }
 
 type BasicInfoUseCase interface {
-	getProvinces(ctx context.Context, name *string) (p []Province, err error)
+	GetProvinces(ctx context.Context, name *string) (p []Province, err error)
 	addProvince(ctx context.Context, p Province) (err error)
 	updateProvince(ctx context.Context, id int64, p Province) (err error)
 	deleteProvince(ctx context.Context, id int64) (err error)

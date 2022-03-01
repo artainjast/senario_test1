@@ -1,0 +1,5 @@
+{
+  "mysql_connection" : {
+    "connection" : "root:root@/test3"
+  }
+}
